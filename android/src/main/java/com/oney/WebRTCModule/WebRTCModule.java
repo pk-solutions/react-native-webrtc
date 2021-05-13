@@ -934,11 +934,6 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
         Log.d(TAG, "peerConnectionAddICECandidate() end");
     }
 
-    @ReactMethod
-    public void peerConnectionGetStats(int peerConnectionId, Promise promise) {
-        ThreadUtils.runOnExecutor(() -> getTrackVolumesAsync(callback));
-    }
-
     private void getTrackVolumesAsync(final Callback callback) {
         AtomicInteger statsRemaining = new AtomicInteger(mPeerConnectionObservers.size());
         WritableArray result = Arguments.createArray();
@@ -994,7 +989,7 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-public void peerConnectionGetStats(int peerConnectionId, Promise, promise) {
+    public void peerConnectionGetStats(int peerConnectionId, Promise promise) {
         ThreadUtils.runOnExecutor(() ->
             peerConnectionGetStatsAsync(peerConnectionId, promise));
     }
