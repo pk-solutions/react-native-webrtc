@@ -237,7 +237,7 @@ export default class RTCPeerConnection extends EventTarget(PEER_CONNECTION_EVENT
   _getTrack(streamReactTag, trackId): MediaStreamTrack {
     let stream = this._remoteStreams.find(stream => stream._reactTag === streamReactTag);
     if (!stream) {
-      this._localStreams.find(stream => stream._reactTag === streamReactTag);
+      stream = this._localStreams.find(stream => stream._reactTag === streamReactTag);
     }
 
     return stream && stream._tracks.find(track => track.id === trackId);
